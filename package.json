@@ -1,0 +1,26 @@
+{
+  "name": "toy-sim",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/node": "20.8.2",
+    "gts": "^5.2.0",
+    "husky": "^8.0.3",
+    "typescript": "~5.2.0"
+  },
+  "scripts": {
+    "lint": "gts lint",
+    "clean": "gts clean",
+    "build": "tsc",
+    "fix": "gts fix",
+    "prepare": "yarn run build",
+    "pretest": "yarn run build",
+    "posttest": "yarn run lint"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "gts fix"
+    }
+  }
+}
