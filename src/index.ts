@@ -9,7 +9,7 @@ function askQuestion() {
     rl.question('Enter a command (type "exit" to quit): ', (answer) => {
         // Handle the input
         if (answer === 'exit') {
-            console.error('Exiting the CLI...');
+            console.error("Exiting the CLI!");
             rl.close(); // This will end the program
         } else {
             console.log(`You entered: ${answer}`);

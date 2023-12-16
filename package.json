@@ -6,7 +6,7 @@
   "devDependencies": {
     "@types/node": "20.8.2",
     "gts": "^5.2.0",
-    "husky": "^8.0.3",
+    "husky": "^8.0.0",
     "typescript": "~5.2.0"
   },
   "scripts": {
@@ -14,7 +14,7 @@
     "clean": "gts clean",
     "build": "tsc",
     "fix": "gts fix",
-    "prepare": "yarn run build",
+    "prepare": "yarn run build && husky install",
     "pretest": "yarn run build",
     "posttest": "yarn run lint"
   },
