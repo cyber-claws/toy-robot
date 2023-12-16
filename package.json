@@ -7,20 +7,23 @@
     "@types/node": "20.8.2",
     "gts": "^5.2.0",
     "husky": "^8.0.0",
+    "only-allow": "^1.2.1",
     "typescript": "~5.2.0"
   },
   "scripts": {
     "lint": "gts lint",
     "clean": "gts clean",
+    "check": "gts check",
     "build": "tsc",
     "fix": "gts fix",
+    "preinstall": "npx only-allow yarn",
     "prepare": "yarn run build && husky install",
     "pretest": "yarn run build",
     "posttest": "yarn run lint"
   },
   "husky": {
     "hooks": {
-      "pre-commit": "gts fix"
+      "pre-commit": "gts check"
     }
   }
 }
