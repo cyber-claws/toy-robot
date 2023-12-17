@@ -1,29 +1,56 @@
 {
   "name": "toy-sim",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "dist/src/index.js",
   "license": "MIT",
+  "author": {
+    "name": "Ishmael Sibisi",
+    "email": "ishmaelsibisi@gmail.com",
+    "url": "https://www.ishmaelsibisi.net"
+  },
   "devDependencies": {
+    "@jest/globals": "^29.7.0",
+    "@types/jest": "^29.5.11",
     "@types/node": "20.8.2",
     "gts": "^5.2.0",
     "husky": "^8.0.0",
+    "jest": "^29.7.0",
+    "lint-staged": "^15.2.0",
     "only-allow": "^1.2.1",
+    "ts-jest": "^29.1.1",
     "typescript": "~5.2.0"
   },
   "scripts": {
-    "lint": "gts lint",
     "clean": "gts clean",
-    "check": "gts check",
+    "lint": "gts lint",
     "build": "tsc",
     "fix": "gts fix",
-    "preinstall": "npx only-allow yarn",
-    "prepare": "yarn run build && husky install",
-    "pretest": "yarn run build",
-    "posttest": "yarn run lint"
+    "test": "jest",
+    "preinstall": "npx only-allow yarn"
   },
   "husky": {
     "hooks": {
-      "pre-commit": "gts check"
+      "pre-commit": "yarn lint-staged"
+    }
+  },
+  "lint-staged": {
+    "src/**/*.ts": "gts check"
+  },
+  "dependencies": {
+    "commander": "^11.1.0"
+  },
+  "bin": {
+    "toy-sim": "./bin/toy-sim"
+  },
+  "jest": {
+    "verbose": false,
+    "preset": "ts-jest",
+    "testEnvironment": "node",
+    "testMatch": [
+      "**/?(*.)+(spec).[jt]s?(x)"
+    ],
+    "transform": {
+      "^.+\\.(js|jsx|ts|tsx)$": "ts-jest"
     }
   }
 }

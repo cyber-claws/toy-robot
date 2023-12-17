@@ -3,11 +3,11 @@
   "compilerOptions": {
     "rootDir": ".",
     "outDir": "dist",
+    "module": "CommonJS",
+    "moduleResolution": "node",
+//    "outFile": "./dist/index.js",
     "experimentalDecorators": true,
-    "baseUrl": "./src",
-    "paths": {
-      "@/*": ["src/*"]
-    }
+    "baseUrl": "./src"
   },
   "include": [
     "src/**/*.ts",

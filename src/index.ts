@@ -1,24 +1,26 @@
-import * as readline from 'node:readline';
+import {Command, Option} from 'commander';
 
-const rl = readline.createInterface({
-  input: process.stdin,
-  output: process.stdout,
-});
+import {startFileMode, startInteractiveMode} from './utils';
 
-function askQuestion() {
-  rl.question('Enter a command (type "exit" to quit): ', answer => {
-    // Handle the input
-    if (answer === 'exit') {
-      console.error('Exiting the CLI!');
-      rl.close(); // This will end the program
-    } else {
-      console.log(`You entered: ${answer}`);
+const cli = new Command();
 
-      // Continue asking questions
-      askQuestion();
+cli
+  .name('toy-sim')
+  .description(
+    'Application for simulating a Toy robot moving on a square tabletop'
+  )
+  .version('1.0.0');
+
+cli
+  .addOption(new Option('-f, --file <path>', 'File with list of examples'))
+  .addOption(
+    new Option('-s, --size <number>', 'Tabletop dimension').default(5, '5x5')
+  )
+  .action(options => {
+    if (!options?.file) {
+      startInteractiveMode(options?.size);
+      return;
     }
+    startFileMode(options?.file, options?.size);
   });
-}
-
-// Start the loop
-askQuestion();
+cli.parse();
