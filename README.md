@@ -55,6 +55,16 @@ $> bin/toy-sim --file path/to/command/file.txt --size=5 # size will default to 5
 ```
 examples of the command file can be found in the [examples](./examples) folder
 
+#### CLI options
+
+```bash
+Options:
+  -V, --version        output the version number
+  -f, --file <path>    File with list of examples
+  -s, --size <number>  Tabletop dimension (default: 5x5)
+  -h, --help           display help for command
+```
+
 ### Testing
 
 The application comes with a suite of tests to ensure functionality. To run these tests, execute:
