@@ -44,6 +44,7 @@ export const startFileMode = (commandFile: string, size: number): void => {
   rl.on('line', command => {
     const parsedCommand = parseCommand(command);
     if (parsedCommand?.command) {
+      console.info(`Running command: ${command}`);
       toy.giveCommand(parsedCommand.command, parsedCommand.options || {});
     }
   });
